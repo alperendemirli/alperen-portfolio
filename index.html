@@ -122,7 +122,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
 #s-skillcerts{display:grid;grid-template-rows:1fr 1fr;background:var(--black);}
 
 /* Skills top half */
-.skills-half{border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:2rem 4rem;overflow:hidden;position:relative;}
+.skills-half{border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:2rem 4rem;padding-top:5.5rem;overflow:hidden;position:relative;}
 .skills-half::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(59,130,246,.04) 0%,transparent 65%);pointer-events:none;}
 .skills-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;}
 .skills-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);}
@@ -190,7 +190,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
 
 /* ═══ CONTACT ═══ */
 #s-contact{display:grid;grid-template-columns:1fr 1fr;background:var(--black);}
-.co-left{border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;overflow:hidden;}
+.co-left{border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-start;padding:5rem 4rem;padding-top:6rem;position:relative;overflow:hidden;}
 .co-left::before{content:'';position:absolute;bottom:-20%;left:-10%;width:55%;height:65%;background:radial-gradient(circle,rgba(59,130,246,.09),transparent 65%);pointer-events:none;}
 .co-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;}
 .co-headline{font-weight:900;font-size:3.5rem;text-transform:uppercase;letter-spacing:-.05em;line-height:.88;margin-bottom:2.5rem;}
@@ -199,7 +199,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
 .co-link{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--muted);font-size:.72rem;padding:.55rem .7rem;border:1px solid transparent;border-radius:10px;transition:all .2s;}
 .co-link:hover{color:var(--text);border-color:var(--border2);background:rgba(255,255,255,.02);}
 .co-link-ic{width:30px;height:30px;background:var(--card);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:.7rem;flex-shrink:0;}
-.co-right{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;gap:.65rem;}
+.co-right{display:flex;flex-direction:column;justify-content:flex-start;padding:5rem 4rem;padding-top:6rem;gap:.65rem;}
 .co-in{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.65rem .9rem;color:var(--text);font-family:var(--fd);font-size:.8rem;outline:none;transition:border-color .2s;width:100%;}
 .co-in::placeholder{color:var(--muted2);}
 .co-in:focus{border-color:rgba(59,130,246,.4);}
@@ -231,7 +231,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
     <a onclick="goTo(2)">Skills</a>
     <a onclick="goTo(2)">Certs</a>
     <a onclick="goTo(3)">Contact</a>
-    <a href="resume.pdf" download style="opacity:.4">Resume</a>
+    <a style="opacity:.4">Resume</a>
   </div>
 </nav>
 
@@ -294,7 +294,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
   </div>
   <div class="about-right">
     <div class="about-label">About Me</div>
-    <div class="about-headline">Over<span>9+ Years</span></div>
+    <div class="about-headline">Over<span>7+ Years</span></div>
     <p class="about-bio">I've worked in the <strong>UAE, Saudi Arabia, Qatar, and Montenegro</strong> — taking ownership of multi-module SaaS platforms across web and mobile. I combine customer conversations, support signals, and product analytics to clarify requirements, set priorities, and ship on a consistent cadence.</p>
     <div class="about-divider"></div>
     <div class="exp-row"><span class="exp-year">2020 →</span><div class="exp-detail"><h4>Product Manager — Thronis</h4><p>Abu Dhabi · Riyadh · Istanbul</p></div></div>
@@ -350,12 +350,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
       <a class="co-link"><div class="co-link-ic">📍</div>Istanbul, Türkiye</a>
     </div>
   </div>
-  <form action="https://formspree.io/f/xvzwqevr" method="POST" style="display:flex;flex-direction:column;gap:.65rem;">
-  <input class="co-in" type="text" name="name" placeholder="Your name" required>
-  <input class="co-in" type="email" name="email" placeholder="Your email" required>
-  <textarea class="co-in" style="resize:none;height:110px" name="message" placeholder="Your message..." required></textarea>
-  <button class="co-btn" id="sendBtn" type="submit">Send Message →</button>
-</form>
+  <div class="co-right">
+    <input class="co-in" type="text" placeholder="Your name">
+    <input class="co-in" type="email" placeholder="Your email">
+    <textarea class="co-in" style="resize:none;height:110px" placeholder="Your message..."></textarea>
+    <button class="co-btn" id="sendBtn">Send Message →</button>
+  </div>
 </section>
 
 <script>
