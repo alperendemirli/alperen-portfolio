@@ -210,6 +210,181 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:v
 .scroll-hint{position:absolute;bottom:2rem;left:42%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.46rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);animation:floatHint 2.5s ease-in-out infinite;z-index:10;}
 @keyframes floatHint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
 .scroll-hint-arrow{width:16px;height:16px;border-right:1px solid var(--muted2);border-bottom:1px solid var(--muted2);transform:rotate(45deg);}
+
+/* ═══════════════════════════════════════
+   MOBILE — full override below 768px
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Kill snap scroll — become normal page */
+  html, body { overflow: auto !important; height: auto !important; }
+
+  .page {
+    position: relative !important;
+    transform: none !important;
+    transition: none !important;
+    height: auto !important;
+    min-height: 100svh;
+  }
+
+  /* Hide sidebar dots */
+  #sidebar { display: none; }
+
+  /* Topnav */
+  #topnav {
+    padding: 1.1rem 1.25rem;
+    background: rgba(0,0,0,.92) !important;
+    backdrop-filter: blur(20px);
+    border-color: var(--border) !important;
+  }
+  .nav-brand { font-size: .9rem; }
+  .nav-links {
+    gap: 1.2rem;
+    font-size: .42rem;
+    letter-spacing: .12em;
+  }
+  .nav-links a[style] { display: none; } /* hide Resume */
+
+  /* Progress line off */
+  #progress-line { display: none; }
+
+  /* ── HERO ── */
+  #s-hero {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto;
+    min-height: 100svh;
+  }
+
+  .hero-right {
+    height: 55vw;
+    order: -1; /* photo on top */
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-left {
+    border-right: none !important;
+    padding: 5rem 1.5rem 2.5rem;
+  }
+
+  .terminal {
+    position: relative !important;
+    top: auto; left: auto; right: auto;
+    margin-bottom: 1.5rem;
+    font-size: .7rem;
+  }
+  .term-row { font-size: .6rem; }
+
+  .hero-name-left .n1 { font-size: 2.8rem; }
+  .hero-name-left .n2 { font-size: 2.8rem; }
+  .hero-eyebrow { font-size: .48rem; letter-spacing: .12em; }
+  .hero-desc { font-size: .75rem; max-width: 100%; }
+  .hero-btns { flex-wrap: wrap; }
+  .btn-solid, .btn-outline { font-size: .58rem; padding: .5rem 1.2rem; }
+
+  .scroll-hint { display: none; }
+
+  /* ── ABOUT ── */
+  #s-about {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+
+  .about-left {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+    padding: 5.5rem 1.5rem 2rem;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1.25rem;
+    background: linear-gradient(180deg,#030812,#000);
+  }
+
+  .about-photo-wrap {
+    width: 100px;
+    aspect-ratio: .75 !important;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .about-name-sm { font-size: 1.1rem; }
+
+  .about-right {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-headline { font-size: 2rem; }
+  .about-bio { font-size: .78rem; }
+
+  .exp-row { grid-template-columns: 60px 1fr; }
+  .exp-detail h4 { font-size: .78rem; }
+  .exp-detail p { font-size: .6rem; }
+
+  /* ── SKILLS + CERTS ── */
+  #s-skillcerts {
+    grid-template-rows: auto auto !important;
+    min-height: auto;
+  }
+
+  .skills-half {
+    padding: 5.5rem 1.5rem 2rem !important;
+  }
+
+  .skills-title { font-size: 1.5rem; }
+
+  .stag.sz1 { font-size: 1.1rem; }
+  .stag.sz2 { font-size: .8rem; }
+  .stag.sz3 { font-size: .62rem; }
+
+  .skills-cloud { gap: .5rem; }
+
+  .certs-half {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .certs-title { font-size: 1.5rem; }
+
+  .certs-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: .5rem;
+  }
+
+  .flip { height: 90px; }
+  .ff-ic { font-size: 1rem; }
+  .ff-t { font-size: .4rem; }
+
+  /* ── CONTACT ── */
+  #s-contact {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+
+  .co-left {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+    padding: 5.5rem 1.5rem 2rem !important;
+    justify-content: flex-start !important;
+  }
+
+  .co-headline { font-size: 2.5rem; margin-bottom: 1.5rem; }
+
+  .co-link { font-size: .65rem; }
+
+  .co-right {
+    padding: 2rem 1.5rem 3rem !important;
+    justify-content: flex-start !important;
+  }
+
+  .co-in { font-size: .75rem; }
+  .co-btn { font-size: .65rem; padding: .6rem 1.5rem; }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  .hero-name-left .n1,
+  .hero-name-left .n2 { font-size: 2.2rem; }
+  .nav-links { gap: .8rem; font-size: .38rem; }
+  .certs-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
 </style>
 </head>
 <body>
@@ -513,17 +688,25 @@ function buildSkillRow(id,items){
 }
 buildSkillRow('sr1',R1); buildSkillRow('sr2',R2); buildSkillRow('sr3',R3);
 
-/* ── SNAP SCROLL ── */
+/* ── SNAP SCROLL (desktop only) ── */
 const sections=Array.from(document.querySelectorAll('.page'));
 const total=sections.length;
 let current=0, animating=false, lastScroll=0;
+const isMobile=()=>window.innerWidth<=768;
 
 function place(){
+  if(isMobile())return;
   sections.forEach((s,i)=>s.style.transform=`translateY(${(i-current)*100}vh)`);
 }
 place();
 
 function goTo(idx){
+  if(isMobile()){
+    // on mobile just scroll to section
+    sections[idx]?.scrollIntoView({behavior:'smooth'});
+    updateNav(idx);
+    return;
+  }
   if(animating||idx===current||idx<0||idx>=total)return;
   animating=true;
   sections[current].style.transition='transform .1s ease-in, scale .1s ease-in';
@@ -536,22 +719,49 @@ function goTo(idx){
 }
 
 window.addEventListener('wheel',e=>{
+  if(isMobile())return;
   const now=Date.now(); if(now-lastScroll<220)return; lastScroll=now;
   e.deltaY>0?goTo(current+1):goTo(current-1);
 },{passive:true});
+
 let ty=0;
 window.addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
-window.addEventListener('touchend',e=>{const d=ty-e.changedTouches[0].clientY;if(Math.abs(d)>40){d>0?goTo(current+1):goTo(current-1);}},{passive:true});
+window.addEventListener('touchend',e=>{
+  if(isMobile())return; // let mobile scroll naturally
+  const d=ty-e.changedTouches[0].clientY;
+  if(Math.abs(d)>40){d>0?goTo(current+1):goTo(current-1);}
+},{passive:true});
+
 window.addEventListener('keydown',e=>{
+  if(isMobile())return;
   if(e.key==='ArrowDown'||e.key==='PageDown')goTo(current+1);
   if(e.key==='ArrowUp'||e.key==='PageUp')goTo(current-1);
 });
 
+// Mobile: update nav on scroll
+window.addEventListener('scroll',()=>{
+  if(!isMobile())return;
+  const idx=sections.reduce((best,s,i)=>{
+    const rect=s.getBoundingClientRect();
+    return Math.abs(rect.top)<Math.abs(sections[best].getBoundingClientRect().top)?i:best;
+  },0);
+  updateNav(idx);
+},{passive:true});
+
 function updateNav(idx){
   document.querySelectorAll('.sn-item').forEach((el,i)=>el.classList.toggle('on',i===idx));
   document.getElementById('progress-line').style.height=((idx/(total-1))*100)+'vh';
-  document.getElementById('topnav').classList.toggle('scrolled',idx>0);
+  document.getElementById('topnav').classList.toggle('scrolled',idx>0||isMobile());
 }
+
+// Re-place on resize
+window.addEventListener('resize',()=>{
+  if(isMobile()){
+    sections.forEach(s=>{s.style.transform='';s.style.scale='';});
+  } else {
+    place();
+  }
+});
 
 /* ── MAGNETIC SEND BTN ── */
 const sb=document.getElementById('sendBtn');
