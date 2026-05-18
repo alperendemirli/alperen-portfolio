@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 
 const previewImages = {
   portrait: "/images/alperen-demirli.png",
@@ -592,11 +592,20 @@ function TextureLayer() {
 
 function ImagePanel({ src, alt, className = "", overlay = true }: { src: string; alt: string; className?: string; overlay?: boolean }) {
   const [failed, setFailed] = useState<boolean>(false);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(panelRef, { amount: 0.65, margin: "-8% 0px -8% 0px" });
 
   return (
-    <div className={`relative overflow-hidden bg-stone-900 ${className}`}>
+    <div ref={panelRef} className={`relative overflow-hidden bg-stone-900 ${className} ${inView ? "grayscale-0" : ""}`}>
       {!failed ? (
-        <img src={src} alt={alt} onError={() => setFailed(true)} className="h-full w-full object-cover" />
+        <motion.img
+          src={src}
+          alt={alt}
+          onError={() => setFailed(true)}
+          className="h-full w-full object-cover"
+          animate={{ scale: inView ? 1.015 : 1 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        />
       ) : (
         <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(249,115,22,0.18),transparent_32%),linear-gradient(135deg,#111,#030303)] p-8 text-center text-xs uppercase tracking-[0.28em] text-stone-500">
           Visual Preview
@@ -915,7 +924,11 @@ function ProjectCard({ project, index, lang, isFeatured = false }: { project: ty
           style={{ y: project.title === "AMMROC" ? 0 : imageY, objectPosition: project.title === "AMMROC" ? "center bottom" : "center center" }}
           src={project.image}
           alt={project.title}
-          className={`w-full grayscale transition duration-700 group-hover:grayscale-0 ${
+          initial={{ filter: "grayscale(100%)" }}
+          whileInView={{ filter: "grayscale(0%)" }}
+          viewport={{ amount: 0.65, margin: "-8% 0px -8% 0px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className={`w-full transition duration-700 group-hover:grayscale-0 ${
             project.title === "AMMROC"
               ? "h-full object-contain bg-stone-950 p-4 group-hover:scale-[1.015]"
               : "h-[118%] object-cover group-hover:scale-105"
