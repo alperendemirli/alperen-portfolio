@@ -884,17 +884,17 @@ function ProjectCard({ project, index, lang, isFeatured = false }: { project: ty
       transition={{ duration: 1, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
       data-cursor
       className={`group relative grid overflow-hidden border-t border-stone-100/10 ${
-        isFeatured ? "min-h-[72vh] xl:h-[82vh] lg:grid-cols-[minmax(380px,0.62fr)_1.38fr] xl:grid-cols-[minmax(430px,0.58fr)_1.42fr]" : "min-h-[52vh] xl:h-[58vh] lg:grid-cols-[minmax(340px,0.56fr)_1.44fr] xl:grid-cols-[minmax(380px,0.52fr)_1.48fr]"
+        isFeatured ? "min-h-[72vh] lg:grid-cols-[minmax(380px,0.62fr)_1.38fr] xl:grid-cols-[minmax(430px,0.58fr)_1.42fr]" : "min-h-[52vh] lg:grid-cols-[minmax(340px,0.56fr)_1.44fr] xl:grid-cols-[minmax(380px,0.52fr)_1.48fr]"
       }`}
     >
-      <div className="relative z-10 flex min-h-0 min-w-0 flex-col justify-between bg-[#090909]/95 p-7 backdrop-blur md:p-10">
+      <div className="relative z-10 flex min-h-0 min-w-0 flex-col justify-between bg-[#090909]/95 p-6 backdrop-blur sm:p-7 md:p-10">
         <div className="flex items-start justify-between gap-8">
           <span className={`font-mono ${isFeatured ? "text-base text-orange-400" : "text-sm text-orange-400/70"}`}>{project.id}</span>
           <span className="text-right text-xs uppercase tracking-[0.25em] text-stone-500">{t(project.category, lang)}</span>
         </div>
 
-        <div className="min-h-0 min-w-0 py-8">
-          <h3 className={`max-w-xl text-wrap break-words font-black uppercase leading-[0.92] tracking-[-0.055em] text-stone-100 ${isFeatured ? "text-[clamp(2.35rem,4.5vw,4.8rem)]" : "text-[clamp(2rem,3.5vw,3.9rem)]"}`}>
+        <div className="min-h-0 min-w-0 py-6 md:py-8">
+          <h3 className={`max-w-xl text-wrap break-words font-black uppercase leading-[0.92] tracking-[-0.055em] text-stone-100 ${isFeatured ? "text-[clamp(2.15rem,4.5vw,4.8rem)]" : "text-[clamp(1.85rem,3.5vw,3.9rem)]"}`}>
             {project.title}
           </h3>
 
@@ -903,14 +903,14 @@ function ProjectCard({ project, index, lang, isFeatured = false }: { project: ty
             <p className="text-base leading-relaxed text-stone-200">{t(project.contribution, lang)}</p>
           </div>
 
-          <div className="mt-7 border-t border-stone-100/10 pt-5">
+          <div className="mt-6 border-t border-stone-100/10 pt-5 md:mt-7">
             <p className="mb-2 text-xs uppercase tracking-[0.24em] text-stone-600">{c.projects.demand}</p>
-            <p className="max-w-md text-sm leading-relaxed text-stone-500">{t(project.demand, lang)}</p>
+            <p className="max-w-md text-sm leading-relaxed text-stone-500 md:text-[0.95rem]">{t(project.demand, lang)}</p>
           </div>
         </div>
       </div>
 
-      <div className={`relative min-w-0 overflow-hidden bg-stone-900 ${isFeatured ? "min-h-[48vh] lg:h-full" : "min-h-[34vh] lg:h-full"}`}>
+      <div className={`relative min-w-0 overflow-hidden bg-stone-900 ${isFeatured ? "min-h-[48vh] lg:min-h-[72vh]" : "min-h-[34vh] lg:min-h-[52vh]"}`}>
         <motion.img
           style={{ y: project.title === "AMMROC" ? 0 : imageY, objectPosition: project.title === "AMMROC" ? "center bottom" : "center center" }}
           src={project.image}
